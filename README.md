@@ -1,25 +1,28 @@
 # Title: Analyze gender differences and seasonal changes in negative emotion expression
 # Abstract
-A growing body of evidence shows that people with depression use language differently. Many studies have unveiled a class of words that can help accurately predict whether someone is suffering from depression. The most robust language marker of depression is the frequency of using first-person singular pronouns, such as I and my. Moreover, specific negative descriptors are linked to the tendency of depression.
-
-Under this context, we have applied sentiment analysis to automatically sort text data from Quotebank by positive, negative, and neutral sentiments. The further goals of our project are (1) Analyzing the correlation between the frequency of using negative words and seasons (2) Analyzing the change in the number of negative words each year, and identifying whether the growing number of negative words is related to significant events by date. For example, if we can identify more negative words in 2020 due to the occurrence of COVID-19.
+A growing body of evidence shows that people in negative mood use language differently. Many studies have unveiled a class of words that can help accurately detect whether someone is in negative emotions. Furthermore, mental disorders have been found to be positively associated with temperature. Moreover, gender differences were expected for different emotion and social process words, and overall word use.
 
 # Research Questions
-As the dataset of Quotebank contains data from 2015 to 2020, which enables us to perform statistical analysis along the period, we would like to take advantage of this to analyze the time expansion property. We will focus on analyzing the relationship between the amounts of the language markers and the effects of change of season and significant events. The detailed questions are as follows:
+Under this context, we have applied sentiment analysis to automatically sort text data from Quotebank by positive, negative, and neutral sentiments. The further goals of our project are the following:
 
-It is only until recently that people started to be more and more aware of mental condition. Therefore, we are going to figure out if there is a growing attention to mental condition in society as the disorder prevails by the following keywords: mental illness, psychopath, depression, mental disorder.
-Can we see a growing population affected by depression with our text-based detection method in accordance with the statistical results?
-Seasonal Affective Disorder (SAD) is a form of depression that occurs in fall and winter due to the decrease of sunlight while recover when spring and summer hit again. We will discuss the effect by looking into the difference between the four seasons.
-Apart from SAD, January is known as the most depressing month of the year. As a result of the due dates of credit card bills are usually January, people find themselves overwhelmed by the economics pressure. We will investigate this phenomenon, especially compared with other winter months.
-The major events that occurred would also affect people’s emotion. Therefore, we will analyze the impact of these events comparing the data before and after given a certain period, depends on the lasting time of the event, such as COVID-19 pandemic.
+    * Analyze the trend of negative experience
+    * Analyze the seasonal effect on negative emotions
+    * Analyze gender effect on negative emotions
 
 # Method
+To look into this topic, we analyzed the dataset from Quotebank, which is a corpus of quotations from a decade of news. We mainly focused on the data from 2015 to 2019 (excluding 2016 since the data in 2016 is not equally distributed in each month) and in 2020, it only covers until April. In this project, we applied two libraries, TextBlob and gender-guesser, to analyze the dataset.
 
-# Proposed Timeline & A list of internal milestones
-W9 & W10 (12.11 - 25.11): Coming up with algorithm, plotting graphs
-W11 (26.11 - 02.12): Data analysis, data story, and creating website
-W12 (03.12 - 09.12): Creating website and data story
-W13 (10.12 - 16.12): Wrap up of the whole project, written report, and final presentation
+TextBlob is a Python library for prossing textual data, is useful for sentiment analysis by a pre-defined dictionary classifying negative and positive words. TextBlob assigns a score, between [-1, 1] to each word in a sentence, then by operations, for example, multipys and takes average, to get the final results. TextBlob returns polarity and subjectivity of a sentence which we can further analyze. Gender-guesser predicts the gender of a given first name with six different output: unknown (name not found), andy (androgynous), male, female, mostly_male, or mostly_female. In our project, we take male and mostly_male as man, female and mostly_female as women, while discard the data that gives output as unknown and andy.
+
+For all the analysis, we randomly collect 1 million quotes from 2017, 2018, and 2019 for 30 times to decrease bias and variation.
+## bootstrapping procedure
+* Take 1 million quotes for each year in 2017 - 2019
+* Divided the 1 million quotes into 12 months, that is 12 pools.
+* Bootstrapping (Randomly sampling) 10 thousands quotes from every month pool, so that each month pool contains 10 thousands quotes
+* Calculate the negative count/polarity scores of each month pool.
+* Repeat steps 3 and step 4 with replication n = 30, so we can calculate the median and standard deviation of the negative quotes for each month.
+* Draw box plots of spring, summer, autumn and winter
+
 
 # Organization within the team
 Cheng-Hua Huang: data story, Coming up with algorithm, Wrap up of the whole project
