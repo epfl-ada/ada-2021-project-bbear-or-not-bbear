@@ -45,6 +45,9 @@ For all the analysis, we randomly collect 1 million quotes from 2017, 2018, and 
 
 # Organization within the team
 Cheng-Hua Huang: data story, Coming up with algorithm, Wrap up of the whole project
+
 Han-Yun Jhang: data story, Coming up with algorithm, Data analysis, Wrap up of the whole project
+
 Hongyu Gu: data story, Creating website and data story, Wrap up of the whole project
+
 Si-Ying Lai: data story, Data analysis, Creating website and data story, Wrap up of the whole project
