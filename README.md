@@ -15,7 +15,7 @@ To look into this topic, we analyzed the dataset from Quotebank, which is a corp
 TextBlob is a Python library for prossing textual data, is useful for sentiment analysis by a pre-defined dictionary classifying negative and positive words. TextBlob assigns a score, between [-1, 1] to each word in a sentence, then by operations, for example, multipys and takes average, to get the final results. TextBlob returns polarity and subjectivity of a sentence which we can further analyze. Gender-guesser predicts the gender of a given first name with six different output: unknown (name not found), andy (androgynous), male, female, mostly_male, or mostly_female. In our project, we take male and mostly_male as man, female and mostly_female as women, while discard the data that gives output as unknown and andy.
 
 For all the analysis, we randomly collect 1 million quotes from 2017, 2018, and 2019 for 30 times to decrease bias and variation.
-## bootstrapping procedure
+## Bootstrapping Procedure
 * Take 1 million quotes for each year in 2017 - 2019
 * Divided the 1 million quotes into 12 months, that is 12 pools.
 * Bootstrapping (Randomly sampling) 10 thousands quotes from every month pool, so that each month pool contains 10 thousands quotes
