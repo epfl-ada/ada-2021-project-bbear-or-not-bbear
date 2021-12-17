@@ -9,6 +9,9 @@ Under this context, we have applied sentiment analysis to automatically sort tex
 * Analyze the seasonal effect on negative emotions
 * Analyze gender effect on negative emotions
 
+# Website 
+[here](https://93155.github.io/bbear_bbear/)
+
 # Method
 To look into this topic, we analyzed the dataset from Quotebank, which is a corpus of quotations from a decade of news. We mainly focused on the data from 2015 to 2019 (excluding 2016 since the data in 2016 is not equally distributed in each month) and in 2020, it only covers until April. In this project, we applied two libraries, TextBlob and gender-guesser, to analyze the dataset.
 
@@ -16,14 +19,29 @@ TextBlob is a Python library for prossing textual data, is useful for sentiment 
 
 For all the analysis, we randomly collect 1 million quotes from 2017, 2018, and 2019 for 30 times to decrease bias and variation.
 
-## Bootstrapping Procedure
-* Take 1 million quotes for each year in 2017 - 2019
-* Divided the 1 million quotes into 12 months, that is 12 pools.
-* Bootstrapping (Randomly sampling) 10 thousands quotes from every month pool, so that each month pool contains 10 thousands quotes
-* Calculate the negative count/polarity scores of each month pool.
-* Repeat steps 3 and step 4 with replication n = 30, so we can calculate the median and standard deviation of the negative quotes for each month.
-* Draw box plots of spring, summer, autumn and winter
+## Negative emotion trend
+1. 1 million data set 
+2. Feature engineering by negative wordbank
+3. Calculate negative counts annually
+4. Plot neg counts vs. time
 
+## Seasonal effect on negative emotions
+1. Take 1 million quotes for each year in 2017 - 2019
+2. Divided the 1 million quotes into 12 months, that is 12 pools.
+3. Bootstrapping (Randomly sampling) 10 thousands quotes from every month pool, so that each month pool contains 10 thousands quotes
+4. Calculate the negative count/polarity scores of each month pool.
+5. Repeat steps 3 and step 4 with replication n = 30, so we can calculate the median and standard deviation of the negative quotes for each month.
+6. Draw box plots of spring, summer, autumn and winter
+
+## Gender differences in negative emotions
+1. Take 1 million quotes for each year in 2017 – 2019
+2. Append the polarity scores for each quotes
+3. Apply genderize library to categorize the quotes by the gender of the first names
+4. Divided the quotations in two gender types each year
+5. Bootstrapping (Randomly sampling) 10000 quotes from every gender type
+6. Calculate the negative count of each gender type(‘negative count’ here means quotations with anxious words and the polarity scores <=0)
+7. Repeat steps 5 and step 6 with replication n = 30, so we can calculate the median and standard deviation of the negative quotes for each month.
+8. Draw box plots over time, and compare the gender means and variation over time
 
 # Organization within the team
 Cheng-Hua Huang: data story, Coming up with algorithm, Wrap up of the whole project
